@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import PortaitDisplay from '../components/PortaitDisplay';
 import Greeting from '../components/Greeting';
 
@@ -24,6 +24,26 @@ const RightContainer = styled.div`
   justify-content: center;
 `;
 
+const typing = keyframes`0% { width: 0 }
+70% {width: 100%}
+  100% { width: 100% }`;
+
+const blink = keyframes`
+ from { border-color: transparent }
+  to { border-color: black; }
+`;
+
+const TypedOut = styled.span`
+  display: inline-block;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  font-family: 'Satisfy', cursive;
+  font-size: 60px;
+  font-weight: bold;
+  animation: ${typing} 2s steps(30, end) alternate infinite, ${blink} 0.8s infinite;
+`;
+
 export default function HomePage() {
   return (
     <div>
@@ -33,7 +53,9 @@ export default function HomePage() {
         <RightContainer>
           <Greeting message="HELLO" marginLeft={20} />
           <br />
-          <div>I'am John Smith </div>
+          <h4 style={{fontSize: '60px', textAlign: 'left'}}>
+            I DO <TypedOut>hello world</TypedOut>
+          </h4>
         </RightContainer>
       </Container>
     </div>

@@ -10,10 +10,10 @@ const GreetingSpan = styled.span`
   position: relative;
   line-height: 26px;
 
-  margin-top: ${({marginTop}: {marginTop: number}) => marginTop + 'px'};
-  margin-bottom: ${({marginBottom}: {marginBottom: number}) => marginBottom + 'px'};
-  margin-left: ${({marginLeft}: {marginLeft: number}) => marginLeft + 'px'};
-  margin-right: ${({marginRight}: {marginRight: number}) => marginRight + 'px'};
+  margin-top: ${(props: Omit<GreetingProps, 'message'>) => props.marginTop + 'px'};
+  margin-bottom: ${(props: Omit<GreetingProps, 'message'>) => props.marginBottom + 'px'};
+  margin-left: ${(props: Omit<GreetingProps, 'message'>) => props.marginLeft + 'px'};
+  margin-right: ${(props: Omit<GreetingProps, 'message'>) => props.marginRight + 'px'};
 
   &:after {
     position: absolute;
@@ -45,10 +45,10 @@ export default function Greeting({
 }: GreetingProps) {
   return (
     <GreetingSpan
-      marginLeft={marginLeft}
-      marginRight={marginRight}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
+      marginLeft={marginLeft || 0}
+      marginRight={marginRight || 0}
+      marginTop={marginTop || 0}
+      marginBottom={marginBottom || 0}
     >
       {message}
     </GreetingSpan>
